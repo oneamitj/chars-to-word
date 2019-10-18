@@ -7,6 +7,16 @@ Provide characters and length of word. It will give list of valid english word o
 - Example screenshot
 ![](usage.png)
 
+# Viber Bot
+[Link To Viber Bot](viber://pa/info?uri=gameofwords
+) -
+Scan to Open Viber Bot
+
+Viber usage send `find <characters> <length>`. Example `find glreyc 6`
+
+![Scan to Open Viber Bot](viberqr.png)
+
+
 ## Inspiration
 We (me and friends) play word games like 4-pic-1-word, word collect, etc. When we get stuck on a level we share and ask if anyone knows the answer. This one is just to not over spent time on thinking.
 

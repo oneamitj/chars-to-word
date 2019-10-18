@@ -71,7 +71,11 @@ def incoming():
         viber_request = viber.parse_request(request.get_data())
 
         if isinstance(viber_request, ViberMessageRequest):
-            user_message = viber_request.message.lower().split(' ')
+            # print("NEW REQUEST", viber_request.sender.id, viber_request.message.text)
+            # viber.send_messages(viber_request.sender.id, [
+            #     TextMessage(text="SOME OF MY MESSAGE "+viber_request.message.text)])
+            # '''
+            user_message = viber_request.message.text.lower().split(' ')
             if len(user_message) == 3 and user_message[0] == 'find':
                 characters, length = user_message[1], user_message[2]
                 valid_words = chars_2_words(characters, length)
@@ -85,10 +89,11 @@ def incoming():
                     TextMessage(text=message)])
 
             message = 'Sender: ' + viber_request.sender.name + '\nMessage: ' + viber_request.message.text + \
-                      '\nResponse: ' + message
-            viber.send_messages("cD/2wGsZB1neRoUbveLStA==", [
+                      '\nResponse:\n' + message
+            viber.send_messages("xBErJXaqmOexp2rliAXWEQ==", [
                 TextMessage(text=message)
             ])
+            # '''
         elif isinstance(viber_request, ViberConversationStartedRequest) \
                 or isinstance(viber_request, ViberSubscribedRequest) \
                 or isinstance(viber_request, ViberUnsubscribedRequest):
@@ -128,4 +133,3 @@ if __name__ == "__main__":
     t.start()
 
     app.run(host='0.0.0.0', port=int(os.getenv("PORT", "8443")), debug=True)
-    
